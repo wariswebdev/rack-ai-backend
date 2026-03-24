@@ -1,0 +1,22 @@
+// src/config/db.ts
+import { Pool } from "pg";
+
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: Number(process.env.DB_PORT),
+});
+
+// TEST CONNECTION
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error("DB connection error", err.stack);
+  } else {
+    console.log("DB connected successfully!");
+    release(); // release client back to pool
+  }
+});
+
+export default pool;
