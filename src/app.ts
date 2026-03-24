@@ -1,6 +1,8 @@
 import express from "express";
 import authRoutes from "./routes/authRoutes";
 import productRoutes from "./routes/productRoutes";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
